@@ -1,0 +1,73 @@
+<!-- <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">Ürün İsmi</span>
+    </div>
+    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">Seri Numarası</span>
+    </div>
+    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">Birim Fiyatı</span>
+    </div>
+    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+  </div>
+
+  <select class="form-select" aria-label="Default select example">
+    <option selected>Kişiler</option>
+    <option value="1" *ngFor="let person of people">{{ person.ad }} {{person.soyad}}</option>
+  </select>
+  <div class="row">
+  <button type="button" class="btn btn-info mx-auto">Güncelle</button>
+</div> -->
+
+
+<div class="row">
+    <div class="col-md-9">
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            <div class="form-container">
+                <mat-form-field>
+                    <input type="text" placeholder="Ürün İsmi"
+                    formControlName="urunIsim" matInput>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input formControlName="seriNo" matInput
+                     placeholder="Seri Numarası"
+                    >
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input  placeholder="Birim Fiyatı"
+                    formControlName="birimFiyati" matInput>
+                </mat-form-field>
+
+                <!-- <mat-form-field>
+                    <input  placeholder="İnsan ID"
+                    formControlName="insan" matInput>
+                </mat-form-field> -->
+
+                <mat-form-field>
+                    <input  placeholder="İnsan Seç"
+                    formControlName="insan" matInput [matAutocomplete]="auto">
+                    <mat-autocomplete [displayWith]="insanAdSoyadGoruntule" #auto="matAutocomplete">
+                        <mat-option *ngFor="let person of people" value="person">
+                            {{person.ad}} {{person.soyad}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+                <button  mat-raised-button color="primary">
+                    Ürünü Güncelle
+                    <!-- <i class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></i> -->
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

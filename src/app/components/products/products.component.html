@@ -1,0 +1,62 @@
+<table style="width: 100%" mat-table [dataSource]="dataSource">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let product">
+
+    {{ product.id }}
+  </ng-container>
+
+  <ng-container matColumnDef="urunIsim">
+    <th mat-header-cell *matHeaderCellDef> Ürün İsmi </th>
+    <td mat-cell *matCellDef="let product">
+      {{product.urunIsim}}
+    <td>
+  </ng-container>
+
+  <ng-container matColumnDef="seriNo">
+    <th mat-header-cell *matHeaderCellDef> Seri No </th>
+    <td mat-cell *matCellDef="let product">
+      <strong>{{product.seriNo}}</strong>
+    <td>
+  </ng-container>
+
+  <ng-container matColumnDef="birimFiyati">
+    <th mat-header-cell *matHeaderCellDef> Birim Fiyatı </th>
+    <td mat-cell *matCellDef="let product">
+      {{product.birimFiyati}}
+    <td>
+  </ng-container>
+
+  <ng-container matColumnDef="insan.ad">
+    <th mat-header-cell *matHeaderCellDef> Alan Kişinin Adı </th>
+    <td mat-cell *matCellDef="let product">
+      {{product.insan.ad}}
+    <td>
+  </ng-container>
+
+  <ng-container matColumnDef="insan.soyad">
+      <th mat-header-cell *matHeaderCellDef> Alan Kişinin Soyadı </th>
+      <td mat-cell *matCellDef="let product">
+        {{product.insan.soyad}}
+      <td>
+    </ng-container>
+
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> İşlemler </th>
+    <td mat-cell *matCellDef="let product">
+      <button mat-raised-button color="primary"
+        [routerLink]="['/products/guncelle',product.id]">
+        Güncelle <i  class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></i>
+      </button>
+
+      <button class="ms-1" (click)="deleteProduct(product.id)" mat-raised-button color="warn">Sil</button>
+
+    <td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+

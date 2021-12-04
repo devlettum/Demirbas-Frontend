@@ -1,0 +1,66 @@
+<table style="width: 100%" mat-table [dataSource]="dataSource">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let person">
+
+    {{ person.id }}
+  </ng-container>
+
+  <ng-container matColumnDef="ad">
+    <th mat-header-cell *matHeaderCellDef> Kişi Adı </th>
+    <td mat-cell *matCellDef="let person">
+      {{person.ad}}
+    <td>
+  </ng-container>
+
+  <ng-container matColumnDef="soyad">
+    <th mat-header-cell *matHeaderCellDef> Kişi Soyadı </th>
+    <td mat-cell *matCellDef="let person">
+      <strong>{{person.soyad}}</strong>
+    <td>
+  </ng-container>
+
+  <ng-container matColumnDef="tel">
+    <th mat-header-cell *matHeaderCellDef> Telefon Numarası </th>
+    <td mat-cell *matCellDef="let person">
+      {{person.tel}}
+    <td>
+  </ng-container>
+
+  <ng-container matColumnDef="sehir">
+    <th mat-header-cell *matHeaderCellDef> Şehri </th>
+    <td mat-cell *matCellDef="let person">
+      {{person.sehir}}
+    <td>
+  </ng-container>
+
+  <ng-container matColumnDef="medeniDurum">
+      <th mat-header-cell *matHeaderCellDef> Medeni Durumu </th>
+      <td mat-cell *matCellDef="let person">
+        {{person.medeniDurum}}
+      <td>
+    </ng-container>
+
+    <ng-container matColumnDef="yas">
+      <th mat-header-cell *matHeaderCellDef> Yaşı </th>
+      <td mat-cell *matCellDef="let person">
+        {{person.yas}}
+      <td>
+    </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> İşlemler </th>
+    <td mat-cell *matCellDef="let person">
+      <!-- <button mat-raised-button color="primary"
+        [routerLink]="['/admin/person/guncelle',person.id]">
+        Güncelle <i  class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></i>
+      </button> -->
+
+      <button class="ms-1" (click)="deletePerson(person.id)" mat-raised-button color="warn">Sil</button>
+
+    <td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
